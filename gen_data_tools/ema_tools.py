@@ -2,9 +2,10 @@ import numpy as np
 import pandas as pd
 from numba import jit
 import os
-        
-"""--------------------------------------------------EMA Tools-------------------------------------------------------"""
-def check_create_emas(setup_class, ema_range, daily=False):
+
+
+def check_create_emas(data_class, ema_range, daily=False):
+    setup_class = data_class.setup_params
     if daily:
         file_output = (f'{setup_class.strat_loc}\\{setup_class.security}\\'
                        f'{setup_class.timeframe}\\{setup_class.security}_daily_EMAs.csv')
@@ -14,16 +15,21 @@ def check_create_emas(setup_class, ema_range, daily=False):
 
     file_exists = os.path.exists(file_output)
     if file_exists:
-        return get_missing_cols(file_output, ema_range)
+        if daily:
+            ema_df = pd.read_csv(file_output)
+            return ema_df
+        else:
+            return get_missing_cols(file_output, ema_range)
     else:
         if daily:
-            ema_df = create_ema_df(setup_class.daily_df, ema_range, daily)
+            ema_df = create_ema_df(data_class.daily_df, ema_range, daily)
             ema_df.to_csv(file_output, index=False)
             return ema_df
         else:
-            ema_df = create_ema_df(setup_class.working_df, ema_range, daily)
+            ema_df = create_ema_df(data_class.working_df, ema_range, daily)
             ema_df.to_csv(file_output, index=False)
             return ema_df
+
 
 def get_missing_cols(file_output, ema_range):
     ema_df = pd.read_csv(file_output)
@@ -52,7 +58,7 @@ def create_ema_df(df, ema_len_list, daily=False):
         )
 
     if daily:
-        df = df[['Date', 'Open'] + [f'EMA_{ema_len}' for ema_len in ema_len_list]]
+        df = df[['Date', 'Open', 'EMA_8']]
     else:
         df = df[['DateTime', 'Open'] + [f'EMA_{ema_len}' for ema_len in ema_len_list]]
 

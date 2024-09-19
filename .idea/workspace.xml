@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2f1016b-b21e-4216-9fa7-4c0180fef990" name="Changes" comment="" />
+    <list default="true" id="d2f1016b-b21e-4216-9fa7-4c0180fef990" name="Changes" comment="Second iteration of the Double Candles Trading Algo. It allows for the user to choose the amount of data to record, creates standalone processes that can be used by optimization algos for immediate testing, and adjusts the logic from previous versions to be closer to TradingView results.">
+      <change afterPath="$PROJECT_DIR$/algo_tools/dblc_setup_params.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dblc_algo_logic/dbl_condition_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dblc_algo_logic/dblc_data_tools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dblc_algo_logic/dblc_make_trades.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo_data_tools/ema_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_data_tools/ema_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo_data_tools/general_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/gen_data_tools/general_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo_data_tools/stoploss_takeprofit_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo_tools/stoploss_takeprofit_tools.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jmdubish1"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jmdubish1/DoubleCandles2.git",
+    "accountId": "cb42e62d-39e4-4760-8608-310557292168"
+  }
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 2
 }]]></component>
@@ -21,10 +53,100 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.dblc_make_trades.executor": "Run",
+    "Python.scratch.executor": "Run",
+    "Python.stoploss_takeprofit_tools.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/jmdub/PycharmProjects/Double_Candles_2/dblc_algo_logic"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jmdub\PycharmProjects\Double_Candles_2\dblc_algo_logic" />
+      <recent name="C:\Users\jmdub\PycharmProjects\Double_Candles_2\algo_tools" />
+      <recent name="C:\Users\jmdub\PycharmProjects\Double_Candles_2\algo_data_tools" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jmdub\PycharmProjects\Double_Candles_2\algo_tools" />
+      <recent name="C:\Users\jmdub\PycharmProjects\Double_Candles_2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.dblc_make_trades">
+    <configuration name="dblc_make_trades" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Double_Candles_2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dblc_algo_logic" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dblc_algo_logic/dblc_make_trades.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Double_Candles_2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/garbage" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/garbage/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="stoploss_takeprofit_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Double_Candles_2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/algo_tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algo_tools/stoploss_takeprofit_tools.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.dblc_make_trades" />
+        <item itemvalue="Python.stoploss_takeprofit_tools" />
+        <item itemvalue="Python.scratch" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -41,6 +163,19 @@
       <option name="presentableId" value="Default" />
       <updated>1726757113330</updated>
     </task>
+    <task id="LOCAL-00001" summary="Second iteration of the Double Candles Trading Algo. It allows for the user to choose the amount of data to record, creates standalone processes that can be used by optimization algos for immediate testing, and adjusts the logic from previous versions to be closer to TradingView results.">
+      <option name="closed" value="true" />
+      <created>1726757346459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726757346459</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Second iteration of the Double Candles Trading Algo. It allows for the user to choose the amount of data to record, creates standalone processes that can be used by optimization algos for immediate testing, and adjusts the logic from previous versions to be closer to TradingView results." />
+    <option name="LAST_COMMIT_MESSAGE" value="Second iteration of the Double Candles Trading Algo. It allows for the user to choose the amount of data to record, creates standalone processes that can be used by optimization algos for immediate testing, and adjusts the logic from previous versions to be closer to TradingView results." />
   </component>
 </project>

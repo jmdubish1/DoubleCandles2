@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 """---------------------------------------------Aggregate Work-------------------------------------------------------"""
 @dataclass
-class MonthlyAggHandler:
+class AggHandler:
     dayslowoh: int
     smonthly_list: list
     file_output: str
@@ -17,8 +17,8 @@ class MonthlyAggHandler:
     total_combos: int
 
     def __init__(self, emac_setup, combo_start):
-        self.monthly_dfs = []
-        self.monthly_params = []
+        self.trade_df = []
+        self.paramsets = []
         self.param_names = []
         self.file_output = emac_setup.file_output
         self.security = emac_setup.security
@@ -26,34 +26,33 @@ class MonthlyAggHandler:
         self.algo_name = emac_setup.algo_name
         self.combo = combo_start
         self.total_combos = emac_setup.total_combos
-        self.out_df = None
 
     def period_save(self):
         print("Saving Data")
-        self.build_aggregated_data()
-        self.save_aggregated_data()
-        self.monthly_params = []
-        self.monthly_dfs = []
+        param_df, trade_dfs = self.build_aggregated_data()
+        self.save_aggregated_data(param_df, trade_dfs)
+        self.paramsets = []
+        self.trade_df = []
 
     def decide_save(self, n_dfs):
-        if len(self.monthly_dfs) > n_dfs:
+        if len(self.paramsets) > n_dfs:
             self.period_save()
 
     def build_aggregated_data(self):
-        param_dict_list = []
-        if len(self.monthly_dfs) > 0:
-            for i in range(0, len(self.monthly_dfs)):
-                param_dict_list.append([self.monthly_params[i]] * len(self.monthly_dfs[i]))
+        param_df = pd.DataFrame(self.paramsets, columns=[['paramset_id'] + self.param_names]).reset_index(drop=True)
+        trade_dfs = pd.concat(self.trade_df).reset_index(drop=True)
 
-        param_dict_list = [item for sublist in param_dict_list for item in sublist]
-        param_df = pd.DataFrame(param_dict_list, columns=self.param_names).reset_index(drop=True)
-        monthly_data_df = pd.concat(self.monthly_dfs).reset_index(drop=True)
-        self.out_df = monthly_data_df.merge(param_df, left_index=True, right_index=True)
+        return param_df, trade_dfs
 
-    def save_aggregated_data(self):
+    def save_aggregated_data(self, param_df, trade_dfs):
         print(f"{self.security}_{self.timeframe}_{self.algo_name}_{self.combo}")
-        save_file = f"{self.file_output}\\{self.security}_{self.timeframe}_{self.algo_name}_{self.combo}.feather"
-        self.out_df.to_feather(save_file)
+        param_save_file = \
+            f'{self.file_output}\\{self.security}_{self.timeframe}_{self.algo_name}_{self.combo}_params.feather'
+        trade_save_file= \
+            f'{self.file_output}\\{self.security}_{self.timeframe}_{self.algo_name}_{self.combo}_trades.feather'
+
+        param_df.to_feather(param_save_file)
+        trade_dfs.to_feather(trade_save_file)
 
 
 def adjust_dates(dates):
@@ -99,6 +98,7 @@ def subset_time(df, dbl_setup, subtract_time=0):
 
 def filter_trades(df):
     df = df.loc[(df['bullTrade'] == 1) | (df['bearTrade'] == 1)]
+    df = df[['DateTime', 'side', 'entryInd', 'entryPrice', 'exitInd', 'exitPrice']]
     df.reset_index(drop=True, inplace=True)
 
     return df

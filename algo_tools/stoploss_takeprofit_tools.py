@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-import general_tools
 
 
 def standard_exit(exit_prices, exit_inds, close_prices, start_idx, idx_curr_exit):
@@ -53,6 +51,7 @@ def find_stops_bull(data_df, stop_loss_percent):
 
     data_df.initial_conds.loc[:, 'exitPrice'] = exit_prices
     data_df.initial_conds.loc[:, 'exitInd'] = exit_inds
+    data_df.initial_conds.loc[:, 'entryInd'] = data_df.initial_conds.index.to_list()
 
 
 def find_stops_bear(data_df, stop_loss_percent):
@@ -101,6 +100,7 @@ def find_stops_bear(data_df, stop_loss_percent):
 
     data_df.initial_conds.loc[:, 'exitPrice'] = exit_prices
     data_df.initial_conds.loc[:, 'exitInd'] = exit_inds
+    data_df.initial_conds.loc[:, 'entryInd'] = data_df.initial_conds.index.to_list()
 
 
 def find_tp_bull(data_df, take_profit_percent):
@@ -134,6 +134,7 @@ def find_tp_bull(data_df, take_profit_percent):
 
     data_df.initial_conds.loc[:, 'exitPrice'] = exit_prices
     data_df.initial_conds.loc[:, 'exitInd'] = exit_inds
+    data_df.initial_conds.loc[:, 'entryInd'] = data_df.initial_conds.index.to_list()
 
 
 def find_tp_bear(data_df, take_profit_percent):
@@ -170,3 +171,6 @@ def find_tp_bear(data_df, take_profit_percent):
 
     data_df.initial_conds.loc[:, 'exitPrice'] = exit_prices
     data_df.initial_conds.loc[:, 'exitInd'] = exit_inds
+    data_df.initial_conds.loc[:, 'entryInd'] = data_df.initial_conds.index.to_list()
+
+
